@@ -1,0 +1,29 @@
+
+## YAML
+# 實驗基本資訊
+experiment_name: "robot_axis1_current_analysis"
+
+# data paths
+data:
+  raw_path: "../data/raw/RMBR4-2_export_test.csv"
+  processed_path: "../data/processed/cleaned_data.csv"
+
+# Model training parameters
+model_params:
+  learning_rate: 0.01
+  iterations: 1500
+  window_size: 500 # ==> by Hyperparameter Sweep
+
+# Predictive maintenance and alarm settings
+maintenance:
+  failure_threshold: 1.0   # A current of XXX is defined as a failure.
+  alert_buffer_days: 14    # An alert is issued XX days in advance.
+
+# Neon connection settings
+database:
+  enabled: false  # switch：true or false
+  db_url: "postgresql://user:password@ep-cool-darkness-123456.us-east-2.aws.neon.tech/robot_db"
+  table_name: "robot_telemetry"
+
+data:
+  raw_path: "../data/raw/RMBR4-2_export_test.csv"

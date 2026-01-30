@@ -1,0 +1,8 @@
+# Python venv/
+LRAvenv/
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+Thumbs.db
+.env
