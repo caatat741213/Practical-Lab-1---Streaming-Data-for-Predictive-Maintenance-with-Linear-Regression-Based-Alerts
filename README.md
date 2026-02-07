@@ -17,6 +17,7 @@ This project follows **MLOps (Machine Learning Operations)** architectural patte
 ├── src/                    # Modular Python scripts (stream_monitor.py, etc.)
 ├── requirements.txt        # Project dependencies
 └── README.md               # Project documentation and threshold justification
+```
 
 ## 🛠️ System Architecture & Features
 * **Database Integration**: Real-time telemetry ingestion from **Neon.tech PostgreSQL**.
