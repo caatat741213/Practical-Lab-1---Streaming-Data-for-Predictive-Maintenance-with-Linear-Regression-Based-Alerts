@@ -5,19 +5,37 @@ experiment_name: "robot_axis1_current_analysis"
 
 # data paths
 data:
-  raw_path: "../data/raw/RMBR4-2_export_test.csv"
-  processed_path: "../data/processed/cleaned_data.csv"
+  raw_path: "data/raw/RMBR4-2_export_test.csv"
+  processed_path: "data/processed/cleaned_data.csv"
 
 # Model training parameters
 model_params:
   learning_rate: 0.01
   iterations: 1500
   window_size: 500 # ==> by Hyperparameter Sweep
+  test_size: 0.2        # 新增：測試集比例
+  random_state: 42      # 新增：確保實驗可重複性
 
 # Predictive maintenance and alarm settings
+# Updated via Scientific Threshold Discovery (3-Sigma Analysis)
 maintenance:
-  failure_threshold: 1.0   # A current of XXX is defined as a failure.
-  alert_buffer_days: 14    # An alert is issued XX days in advance.
+  # Base thresholds for Axis 1 (as default)
+  failure_threshold: 2.0583 
+  alert_threshold: 1.3722
+
+  # Multi-axis specific thresholds
+  # These ensure we don't get false alarms on high-load axes (like Axis 2)
+  axis_thresholds:
+    Axis1: {min_c: 1.3722, max_c: 2.0583}
+    Axis2: {min_c: 6.2426, max_c: 9.3639}
+    Axis3: {min_c: 4.6988, max_c: 7.0482}
+    Axis4: {min_c: 1.0885, max_c: 1.6327}
+    Axis5: {min_c: 1.6608, max_c: 2.4913}
+    Axis6: {min_c: 1.1117, max_c: 1.6676}
+    Axis7: {min_c: 1.5536, max_c: 2.3303}
+    Axis8: {min_c: 0.1857, max_c: 0.2786}
+
+  alert_buffer_days: 14
 
 # Neon connection settings
 database:

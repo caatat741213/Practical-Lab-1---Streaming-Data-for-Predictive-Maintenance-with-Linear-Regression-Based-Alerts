@@ -284,6 +284,7 @@ def run_playback(
     start_last_id: int = 0,
     max_ticks: Optional[int] = None,
     early_warning: Optional[EarlyWarningEngine] = None,
+    output_path: str = "alert_events.csv"
 ) -> None:
     """
     Playback rows from DB at a controlled rate (tick_seconds), as if it were streaming.
@@ -379,8 +380,8 @@ def run_playback(
         time.sleep(float(tick_seconds))
 
         if events:
-            pd.DataFrame(events).to_csv("alert_events.csv", index=False)
-            print("✅ Saved: alert_events.csv")
+            pd.DataFrame(events).to_csv(output_path, index=False)
+            print(f"✅ Saved events to: {output_path}")
         else:
             print("No events fired (nothing to save).")
 

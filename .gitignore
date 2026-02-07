@@ -1,10 +1,13 @@
-# Python venv/
 LRAvenv/
+LRAWvenv/
+.env
+venv/
+(venv)/
+
 __pycache__/
 *.py[cod]
 *$py.class
 .DS_Store
 Thumbs.db
-.env
-venv/
-(venv)/
+
+.ipynb_checkpoints/
